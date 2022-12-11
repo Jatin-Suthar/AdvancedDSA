@@ -10,7 +10,7 @@ public class DetectingCycleInUndirectedGraph {
 	}
 	public static boolean detectCycle(List<List<Integer>> adList) {
 		Queue<Box> q = new LinkedList<>();
-		int len=adList.size();;
+		int len=adList.size();
 		boolean visited[]=new boolean[len];
 		//add starting point of graph
 		for(int i=0; i<len; i++) {
