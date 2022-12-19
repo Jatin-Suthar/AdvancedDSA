@@ -9,12 +9,9 @@ public class NumberOfDistinctIslands {
 	static boolean visited[][];
 	static Set<List<String>> set;
 	static List<String> pair;
-	
+
 	public static void main(String[] args) {
-		int input[][] = { { 1, 1, 0, 1, 1 }, 
-				          { 1, 0, 0, 0, 0 }, 
-				          { 0, 0, 0, 0, 1 }, 
-				          { 1, 1, 0, 1, 1 } };
+		int input[][] = { { 1, 1, 0, 1, 1 }, { 1, 0, 0, 0, 0 }, { 0, 0, 0, 0, 1 }, { 1, 1, 0, 1, 1 } };
 		System.out.println(countDistinctIslands(input));
 	}
 
@@ -38,7 +35,7 @@ public class NumberOfDistinctIslands {
 	public static void traverse(int[][] grid, int i, int j, int x0, int y0) {
 		int dir[][] = { { 1, 0, -1, 0 }, { 0, 1, 0, -1 } };
 		visited[i][j] = true;
-		pair.add(toString(x0-i, y0-j));
+		pair.add(toString(x0 - i, y0 - j));
 		for (int k = 0; k < 4; k++) {
 			int x = i + dir[0][k];
 			int y = j + dir[1][k];
@@ -47,7 +44,7 @@ public class NumberOfDistinctIslands {
 			}
 		}
 	}
-	
+
 	public static String toString(int x, int y) {
 		return String.valueOf(x) + " " + String.valueOf(y);
 	}
