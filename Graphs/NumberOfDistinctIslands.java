@@ -13,6 +13,7 @@ public class NumberOfDistinctIslands {
 	public static void main(String[] args) {
 		int input[][] = { { 1, 1, 0, 1, 1 }, { 1, 0, 0, 0, 0 }, { 0, 0, 0, 0, 1 }, { 1, 1, 0, 1, 1 } };
 		System.out.println(countDistinctIslands(input));
+		System.out.println(pair);
 	}
 
 	static int countDistinctIslands(int[][] grid) {
