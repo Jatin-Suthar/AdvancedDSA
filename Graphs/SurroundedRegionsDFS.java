@@ -1,70 +1,62 @@
 package Graphs;
 
 public class SurroundedRegionsDFS {
+
+}
+
+class Solution_SurroundedRegionsDFS {
+    int[] ver = {-1, 0, 1, 0};
+    int[] hor = {0, 1, 0, -1};
     public void solve(char[][] board) {
-        //first we try to check whether there are corner O's or not
-        int jidx = 0;
-        int iidx = 0;
-        for(int i = 0 ; i < board[0].length ; i++){
-            if(board[0][i] == 'O'){
-                iidx = 0;
-                jidx = i;
-                traverse(board, iidx, jidx);
+        int n = board.length;
+        int m = board[0].length;
+        boolean[][] visited = new boolean[n][m];
+        for(int j=0; j<m; j++) {
+            //jth iteration
+            if(!visited[0][j] && board[0][j]=='O') {
+                dfs(board, visited, 0, j);
             }
         }
-        jidx = 0;
-        iidx = 0;
-        for(int i = 0 ; i < board.length ; i++){
-            if(board[i][0] == 'O'){
-                iidx = i;
-                jidx = 0;
-                traverse(board, iidx, jidx);
+        for(int i=1; i<n; i++) {
+            //ith iteration
+            if(!visited[i][m-1] && board[i][m-1]=='O') {
+                dfs(board, visited, i, m-1);
             }
         }
-        jidx = board[0].length-1;
-        iidx = 0;
-        for(int i = 0 ; i < board.length ; i++){
-            if(board[i][jidx] == 'O'){
-                iidx = i;
-                traverse(board, iidx, jidx);
+        for(int j=m-1; j>=0; j--) {
+            //jth iteration
+            if(!visited[n-1][j] && board[n-1][j]=='O') {
+                dfs(board, visited, n-1, j);
             }
         }
-        jidx = 0;
-        iidx = board.length-1;
-        for(int i = 0 ; i < board[0].length ; i++){
-            if(board[iidx][i] == 'O'){
-                jidx = i;
-                traverse(board, iidx, jidx);
+        for(int i=n-1; i>=1; i--) {
+            //ith iteration
+            if(!visited[i][0] && board[i][0]=='O') {
+                dfs(board, visited, i, 0);
             }
         }
-        for(int i = 0 ; i < board.length ; i++){
-            for(int j = 0 ; j < board[0].length ; j++){
-                if(board[i][j] == 'O'){
-                    board[i][j] = 'X';
-                }
-            }
-        }
-        for(int i = 0 ; i < board.length ; i++){
-            for(int j = 0 ; j < board[0].length ; j++){
-                if(board[i][j] == 'S'){
-                    board[i][j] = 'O';
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<m; j++) {
+                if(board[i][j]=='O') {
+                    board[i][j]='X';
+                } else if(board[i][j]=='S') {
+                    board[i][j]='O';
                 }
             }
         }
     }
-    public static void traverse(char[][] board, int i, int j){
-        board[i][j] = 'S';
-        if(j < board[0].length-1 && board[i][j+1] == 'O'){
-            traverse(board, i, j+1);
+    public void dfs(char[][] grid, boolean[][] visited, int i, int j) {
+        visited[i][j]=true;
+        grid[i][j]='S';
+        for(int idx=0; idx<4; idx++) {
+            int ith = i+ver[idx];
+            int jth = j+hor[idx];
+            if(ith<0 || ith>=grid.length || jth<0 || jth>=grid[0].length) {
+                continue;
+            }
+            if(!visited[ith][jth] && grid[ith][jth]=='O') {
+                dfs(grid, visited, ith, jth);
+            }
         }
-        if(j > 0 && board[i][j-1] == 'O'){
-            traverse(board, i, j-1);
-        }
-        if(i < board.length-1 && board[i+1][j] == 'O'){
-            traverse(board, i+1, j);
-        }
-        if(i > 0 && board[i-1][j] == 'O'){
-            traverse(board, i-1, j);
-        }    
     }
 }
