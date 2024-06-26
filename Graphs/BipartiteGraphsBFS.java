@@ -47,7 +47,7 @@ public class BipartiteGraphsBFS {
 
 		for (int i = 0; i < V; i++) {
 			if (colored[i] == -1) {
-				if (BipartiteCheck(i, queue, colored, adj) == false) {
+				if (!BipartiteCheck(i, queue, colored, adj)) {
 					return false;
 				}
 			}
