@@ -16,7 +16,7 @@ public class FlattenList {
         list.next.next.next.bottom=new Node(35);
         list.next.next.next.bottom.bottom=new Node(40);
         list.next.next.next.bottom.bottom.bottom=new Node(45);
-        Node ans = flatten(list);
+        Node ans = flatten1(list);
         list.print(ans);
     }
 
@@ -51,6 +51,50 @@ public class FlattenList {
             next=next.next;
         }
         return curr;
+    }
+
+    static Node flatten1(Node root) {
+        Node head = new Node(0);
+        Node right = root.next;//it will only go right
+        while(right!=null) {
+            Node curr = head;
+            Node l1 = root;
+            Node l2 = right;
+            System.out.println("l1: " + l1.data + " | l2: " + l2.data);
+            while(l1!=null && l2!=null) {
+                if(l1.data<l2.data) {
+                    curr.bottom = new Node(l1.data);
+                    curr = curr.bottom;
+                    l1 = l1.bottom;
+                } else {
+                    curr.bottom = new Node(l2.data);
+                    curr = curr.bottom;
+                    l2 = l2.bottom;
+                }
+            }
+            while(l1!=null) {
+                curr.bottom = new Node(l1.data);
+                curr = curr.bottom;
+                l1 = l1.bottom;
+            }
+            while(l2!=null) {
+                curr.bottom = new Node(l2.data);
+                curr = curr.bottom;
+                l2 = l2.bottom;
+            }
+            root = head.bottom;
+            right = right.next;
+        }
+        return root;
+    }
+
+    static void printList(Node root) {
+        Node curr = root;
+        while(curr != null) {
+            System.out.print(curr.data + " ");
+            curr = curr.bottom;
+        }
+        System.out.println();
     }
 
 }
