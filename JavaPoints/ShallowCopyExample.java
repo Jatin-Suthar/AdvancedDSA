@@ -6,27 +6,6 @@ import java.util.List;
 public class ShallowCopyExample {
 
     public static void main(String[] args) {
-
-
-        List<Integer> list1 = new ArrayList<>();
-        List<Integer> list2 = list1;
-        list1.add(1);///
-        list1.add(2);///
-        list1.add(3);///
-        List<Integer> list3 = new ArrayList<>(list1);
-        list3.add(4);////
-        list3.add(5);////
-        list2.add(6);/////
-        list2.add(7);/////
-        System.out.println(list1);
-        System.out.println(list2);
-        System.out.println(list3);
-
-//        int[] a = new int[0];
-//        int[] b = new int[-56];
-//        int[] c = new int[3487983989483333];
-
-
         Dog aDog = new Dog("Max");
         Dog oldDog = aDog;
         foo(aDog);
