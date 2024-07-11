@@ -2,7 +2,7 @@ package BinarySearch;
 
 public class MedianInRowWiseSortedArray {
 
-    int median(int matrix[][], int n, int m) {
+    int median(int[][] matrix, int n, int m) {
         int e = Integer.MIN_VALUE, s = Integer.MAX_VALUE;
         for(int i=0; i<n; i++) {
             for(int j=0; j<m; j++) {
