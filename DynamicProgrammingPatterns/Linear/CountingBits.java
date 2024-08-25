@@ -3,7 +3,7 @@ package DynamicProgrammingPatterns.Linear;
 public class CountingBits {
 }
 
-class Solution {
+class CountingBitsSolution {
     public int[] countBits(int n) {
         int[] ans = new int[n+1];
         int offset = 1;
