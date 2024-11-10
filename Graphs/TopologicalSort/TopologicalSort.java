@@ -1,4 +1,4 @@
-package Graphs;
+package Graphs.TopologicalSort;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -9,13 +9,13 @@ public class TopologicalSort {
 	}
 	
 	static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) {
-		boolean visited[] = new boolean[V];
+		boolean[] visited = new boolean[V];
 		Stack<Integer> stack = new Stack<>();
 		for (int i = 0; i < V; i++) {
 			if (!visited[i])
 				dfs(adj, stack, visited, i);
 		}
-		int res[] = new int[V];
+		int[] res = new int[V];
 		int k = 0;
 		while (!stack.isEmpty()) {
 			res[k++] = stack.pop();
