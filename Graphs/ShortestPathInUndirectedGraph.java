@@ -18,7 +18,7 @@ public class ShortestPathInUndirectedGraph {
             }
             int src=sc.nextInt();
             Solution_ShortestPathInUndirectedGraph obj = new Solution_ShortestPathInUndirectedGraph();
-            int res[] = obj.shortestPath(edge,n,m,src);
+            int[] res = obj.shortestPath(edge,n,m,src);
             for(int i=0;i<n;i++){
                 System.out.print(res[i]+" ");
             }
