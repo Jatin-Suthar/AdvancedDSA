@@ -19,25 +19,20 @@ public class FlipColumnForMaximumNumOfRows {
 }
 
 class FlipColumnForMaximumNumOfRowsSolution {
-    public int maxEqualRowsAfterFlips(int[][] matrix) {
-        int ans = 0, n = matrix.length, m = matrix[0].length;
-        Map<String, Integer> map = new HashMap<>();
-        int i=0;
-        while (i<n) {
-            StringBuilder sb1 = new StringBuilder();
-            StringBuilder sb2 = new StringBuilder();
-            for(int j=0; j<m; j++) {
-                sb1.append((matrix[i][j]==0) ? "*" : "|");
-                sb2.append((matrix[i][j]==0) ? "|" : "*");
+    public int maxEqualRowsAfterFlips(int[][] mat) {
+        Map<String, Integer> patFreq = new HashMap<>();
+
+        for (int[] row : mat) {
+            StringBuilder pattern = new StringBuilder();
+            if (row[0] == 0) {
+                for (int bit : row) pattern.append(bit);
+            } else {
+                for (int bit : row) pattern.append(bit ^ 1);
             }
-            String firstPattern = sb1.toString();
-            String secondPattern = sb2.toString();
-            map.put(firstPattern, map.getOrDefault(firstPattern, 0)+1);
-            map.put(secondPattern, map.getOrDefault(secondPattern, 0)+1);
-            ans = Math.max(ans, Math.max(map.get(firstPattern), map.get(secondPattern)));
-            i++;
+            patFreq.merge(pattern.toString(), 1, Integer::sum);
         }
-        return ans;
+
+        return Collections.max(patFreq.values());
     }
 }
 /*
