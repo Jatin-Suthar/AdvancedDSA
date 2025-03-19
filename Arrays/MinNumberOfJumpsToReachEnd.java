@@ -6,16 +6,16 @@ import java.util.Arrays;
 public class MinNumberOfJumpsToReachEnd {
 
     public int jumpUsingGreedyApproach(int[] nums) {
-        int jump = 0;
-        int posi = 0;
-        int max = 0;
+        int jump = 0, posi = 0, max = 0, n = nums.length;
         for(int i=0; i<nums.length-1; i++) {
             max = Math.max(max, i+nums[i]);
             if(i == posi) {
                 jump++;
                 posi = max;
             }
+            if(posi >= n-1) break;
         }
+        if(posi < n-1) return -1;
         return jump;
     }
 
