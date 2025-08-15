@@ -1,6 +1,4 @@
-package DynamicProgramming;
-
-import Oops.Inheritence.A;
+package Maths;
 
 import java.util.ArrayList;
 import java.util.List;

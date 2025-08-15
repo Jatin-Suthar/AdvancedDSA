@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package Maths;
 
 public class FindTheKthCharInStringGameII {
     public static void main(String[] args) {
